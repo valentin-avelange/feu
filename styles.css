@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(20, 21, 22);
+}
+
+.video-container {
+    width: 80%;
+    max-width: 1000px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+#content {
+    display: flex;
+    flex-direction: column; /* Les éléments sont empilés verticalement */
+    justify-content: center; /* Pour centrer verticalement */
+    align-items: center; /* Pour centrer horizontalement */
+    height: 100vh; /* Ajustez la hauteur selon vos besoins */
+}
+
+#start-button {
+    height: 80px;
+    width: 200px;
+    margin-bottom: 2rem;
+}
