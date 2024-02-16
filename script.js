@@ -1,17 +1,27 @@
+let stream; // Déclaration d'une variable globale pour stocker le flux vidéo
+
 document.getElementById('start-button').addEventListener('click', () => {
-    // Obtention de la référence vers l'élément vidéo
     const videoElement = document.getElementById('live-video');
 
-    // Configuration des contraintes pour l'accès à la caméra
+    // Vérifier si le flux vidéo est déjà en cours
+    if (stream) {
+        // Arrêter le flux vidéo
+        stream.getTracks().forEach(track => track.stop());
+        videoElement.srcObject = null; // Effacer la source vidéo
+        stream = null; // Réinitialiser la variable de flux
+        document.querySelector('.video-container').style.display = 'none'; // Cacher le conteneur vidéo
+        return; // Arrêter l'exécution de la fonction
+    }
+
     const constraints = {
         video: true
     };
 
-    // Accès à la caméra et streaming du flux vidéo sur un smartphone android
+    // Accès à la caméra et streaming du flux vidéo
     navigator.mediaDevices.getUserMedia(constraints)
-        .then(stream => {
+        .then(newStream => {
+            stream = newStream; // Stocker le flux vidéo dans la variable globale
             videoElement.srcObject = stream;
-            // Afficher le conteneur de la vidéo une fois que le streaming commence
             document.querySelector('.video-container').style.display = 'block';
         })
         .catch(error => {
