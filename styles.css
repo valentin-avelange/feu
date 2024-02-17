@@ -31,3 +31,9 @@ video {
     width: 200px;
     margin-bottom: 2rem;
 }
+
+#toggle-camera-button {
+    position: absolute;
+    height: 30px;
+    width: 40px;
+}
